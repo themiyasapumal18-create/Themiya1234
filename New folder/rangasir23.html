@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranga Prabath | A/L Business Studies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #0f172a;
+            --secondary-dark: #1e293b;
+            --accent-gold: #fbbf24;
+            --accent-gold-hover: #f59e0b;
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+            --white: #ffffff;
+            --card-bg: rgba(30, 41, 59, 0.8);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .light-mode {
+            --primary-dark: #f8fafc;
+            --secondary-dark: #ffffff;
+            --text-light: #0f172a;
+            --text-gray: #64748b;
+            --card-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(251, 191, 36, 0.1);
+        }
+
+        .light-mode nav {
+            background: rgba(248, 250, 252, 0.95);
+            border-bottom: 1px solid rgba(251, 191, 36, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: rotate(180deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem 2rem;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content h1 span {
+            color: var(--accent-gold);
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.4);
+            background: var(--accent-gold-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .teacher-photo {
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, var(--secondary-dark), var(--primary-dark));
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--accent-gold);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .teacher-photo::before {
+            content: '\f007';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 8rem;
+            color: var(--accent-gold);
+            opacity: 0.3;
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .badge-1 { top: 10%; left: -20px; animation-delay: 0s; }
+        .badge-2 { bottom: 20%; right: -20px; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 2rem;
+            background: var(--secondary-dark);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid rgba(251, 191, 36, 0.1);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--primary-dark);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-img-box {
+            width: 100%;
+            height: 400px;
+            background: var(--secondary-dark);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .about-img-box i {
+            font-size: 6rem;
+            color: var(--accent-gold);
+            opacity: 0.5;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .qualifications {
+            margin-top: 2rem;
+        }
+
+        .qual-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .qual-item i {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+
+        /* Lessons Section */
+        .lessons {
+            background: var(--secondary-dark);
+        }
+
+        .lessons-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid rgba(251, 191, 36, 0.3);
+            background: var(--card-bg);
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .search-bar i {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-gold);
+        }
+
+        .grade-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 2rem;
+            background: transparent;
+            border: 2px solid var(--accent-gold);
+            color: var(--text-light);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .lesson-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(251, 191, 36, 0.1);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .lesson-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .lesson-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-icon i {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .lesson-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .lesson-card p {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .download-btn:hover {
+            gap: 1rem;
+        }
+
+        /* Resources Section */
+        .resources {
+            background: var(--primary-dark);
+        }
+
+        .resources-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .resource-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(251, 191, 36, 0.1);
+            transition: var(--transition);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .resource-header {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-hover));
+            padding: 2rem;
+            text-align: center;
+            color: var(--primary-dark);
+        }
+
+        .resource-header i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .resource-content {
+            padding: 2rem;
+        }
+
+        .resource-list {
+            list-style: none;
+        }
+
+        .resource-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(251, 191, 36, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .resource-list li:last-child {
+            border-bottom: none;
+        }
+
+        .resource-link {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .resource-link:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            background: var(--secondary-dark);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .video-placeholder {
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--secondary-dark), var(--primary-dark));
+            position: relative;
+        }
+
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .play-btn i {
+            color: var(--primary-dark);
+            font-size: 2rem;
+            margin-left: 5px;
+        }
+
+        /* Results Section */
+        .results {
+            background: var(--secondary-dark);
+        }
+
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slider {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-card {
+            min-width: 100%;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .testimonial-image {
+            width: 100px;
+            height: 100px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--accent-gold);
+        }
+
+        .testimonial-image i {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+        }
+
+        .testimonial-text {
+            font-size: 1.25rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-role {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            background: transparent;
+            color: var(--accent-gold);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-btn:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--text-gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: var(--accent-gold);
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        .achievements-grid {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid rgba(251, 191, 36, 0.1);
+        }
+
+        .achievement-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--primary-dark);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(251, 191, 36, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(251, 191, 36, 0.2);
+            background: var(--primary-dark);
+            color: var(--text-light);
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-group.error input,
+        .form-group.error textarea {
+            border-color: #ef4444;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .map-container {
+            margin-top: 2rem;
+            height: 300px;
+            background: var(--secondary-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            color: var(--text-gray);
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-dark);
+            padding: 3rem 2rem 1rem;
+            border-top: 1px solid rgba(251, 191, 36, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        .footer-section p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .social-links a:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(251, 191, 36, 0.1);
+            color: var(--text-gray);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--secondary-dark);
+            z-index: 1001;
+            padding: 2rem;
+            transition: var(--transition);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(251, 191, 36, 0.1);
+            transition: var(--transition);
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--accent-gold);
+            padding-left: 10px;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .teacher-photo {
+                height: 300px;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-badge {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .grade-tabs {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                width: 100%;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-dark);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(251, 191, 36, 0.1);
+            border-top-color: var(--accent-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success Message */
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid #22c55e;
+            color: #22c55e;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .success-message.show {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p style="color: var(--accent-gold); font-weight: 600;">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                Ranga Prabath
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#lessons">Lessons</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="logo">Menu</span>
+            <button class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#home" class="mobile-link">Home</a></li>
+            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#lessons" class="mobile-link">Lessons</a></li>
+            <li><a href="#resources" class="mobile-link">Resources</a></li>
+            <li><a href="#results" class="mobile-link">Results</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="mobileThemeToggle" style="margin-top: 2rem; width: 100%;">
+            <i class="fas fa-moon"></i> Toggle Theme
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <img src="Rangasir.jpg" alt="Ranga Prabath - Business Studies Teacher" class="teacher-photo">
+            <div class="hero-content reveal">
+                <h1>Master A/L Business Studies with <span>Ranga Prabath</span></h1>
+                <p>Expert guidance for Sri Lankan Advanced Level students. Transform your understanding of Business Studies and achieve academic excellence with personalized teaching methods.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> Join Class
+                    </a>
+                    <a href="#resources" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Download Notes
+                    </a>
+                </div>
+            </div>
+
+            <!--<div class="hero-image reveal">
+                <div class="teacher-photo"></div>
+-->
+            <!--    <div class="floating-badge badge-1">
+                    <i class="fas fa-star"></i> 10+ Years Exp.
+                </div>-->
+                <!--<div class="floating-badge badge-2">
+                    <i class="fas fa-trophy"></i> 100% Passed
+                </div>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-card reveal">
+                <span class="stat-number" data-target="10">0</span>
+                <div class="stat-label">Years of Experience</div>
+            </div>
+            <div class="stat-card reveal">
+                <span class="stat-number" data-target="500">0</span>
+                <div class="stat-label">Students Taught</div>
+            </div>
+            <div class="stat-card reveal">
+                <span class="stat-number" data-target="100">0</span>
+                <div class="stat-label"> Pass Rate %</div>
+            </div>
+            <div class="stat-card reveal">
+                <span class="stat-number" data-target="24">0</span>
+                <div class="stat-label">District Ranks</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-title reveal">
+            <h2>About Me</h2>
+            <p>Dedicated to shaping the next generation of business leaders</p>
+        </div>
+        <div class="about-container">
+            <div class="about-image reveal">
+
+                <div class="about-img-box">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+
+            </div>
+            <div class="about-content reveal">
+                <h3>Mr. Ranga Prabath</h3>
+                <p style="margin-bottom: 1.5rem; color: var(--text-gray);">
+                    With over 10 years of experience in teaching Advanced Level Business Studies, I have dedicated my career to helping students understand complex business concepts through practical examples and engaging teaching methods. My approach combines theoretical knowledge with real-world applications.
+                </p>
+                <p style="margin-bottom: 2rem; color: var(--text-gray);">
+                    <strong style="color: var(--accent-gold);">Vision:</strong> To make Business Studies accessible and enjoyable for every student while maintaining the highest academic standards.
+                </p>
+                <div class="qualifications">
+                    <h4 style="margin-bottom: 1rem; color: var(--accent-gold);">Qualifications</h4>
+                    <div class="qual-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>BSc (Accountancy & Finance) sp, MAAT, Banking(IABE)</span>
+                    </div>
+                    <div class="qual-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Uni Of Rajarata</span>
+                    </div>
+                    <div class="qual-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>10+ Years Teaching Experience</span>
+                    </div>
+                    <div class="qual-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Former Examiner - Department of Education</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lessons Section -->
+    <section class="lessons" id="lessons">
+        <div class="section-title reveal">
+            <h2>Lessons & Curriculum</h2>
+            <p>Comprehensive coverage of Grade 12 & 13 Business Studies syllabus</p>
+        </div>
+        <div class="lessons-container">
+            <div class="search-bar reveal">
+                <input type="text" id="lessonSearch" placeholder="Search lessons...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="grade-tabs reveal">
+                <button class="tab-btn active" data-grade="12">Grade 12</button>
+                <button class="tab-btn" data-grade="13">Grade 13</button>
+            </div>
+            <div class="lessons-grid" id="lessonsGrid">
+                <!-- Grade 12 Lessons -->
+                <div class="lesson-card" data-grade="12" data-topic="environment">
+                    <div class="lesson-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Business Environment</h3>
+                    <p>Understanding the internal and external factors affecting business operations in Sri Lankan context.</p>
+                    <a href="#" class="download-btn" onclick="handleDownload(event, 'Business Environment Notes')">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </a>
+                </div>
+                <div class="lesson-card" data-grade="12" data-topic="marketing">
+                    <div class="lesson-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Marketing Management</h3>
+                    <p>Marketing mix, market research, consumer behavior, and strategic marketing planning.</p>
+                    <a href="#" class="download-btn" onclick="handleDownload(event, 'Marketing Notes')">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </a>
+                </div>
+                <div class="lesson-card" data-grade="12" data-topic="finance">
+                    <div class="lesson-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Business Finance</h3>
+                    <p>Sources of finance, financial statements, ratio analysis, and investment decisions.</p>
+                    <a href="#" class="download-btn" onclick="handleDownload(event, 'Finance Notes')">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </a>
+                </div>
+                <div class="lesson-card" data-grade="12" data-topic="hrm">
+                    <div class="lesson-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Human Resource Management</h3>
+                    <p>Recruitment, training, motivation theories, and labor relations.</p>
+                    <a href="#" class="download-btn" onclick="handleDownload(event, 'HRM Notes')">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </a>
+                </div>
+                <!-- Grade 13 Lessons (Hidden by default) -->
+                <div class="lesson-card" data-grade="13" data-topic="strategy" style="display: none;">
+                    <div class="lesson-icon">
+                        <i class="fas fa-chess"></i>
+                    </div>
+                    <h3>Strategic Management</h3>
+                    <p>Strategic planning, SWOT analysis, competitive advantage, and corporate strategy.</p>
+                    <a href="#" class="download-btn" onclick="handleDownload(event, 'Strategic Management Notes')">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </a>
+                </div>
+                <div class="lesson-card" data-grade="13" data-topic="operations" style="display: none;">
+                    <div class="lesson-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Operations Management</h3>
+                    <p>Production planning, quality control, supply chain, and inventory management.</p>
+                    <a href="#" class="download-btn" onclick="handleDownload(event, 'Operations Notes')">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </a>
+                </div>
+                <div class="lesson-card" data-grade="13" data-topic="economics" style="display: none;">
+                    <div class="lesson-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Business Economics</h3>
+                    <p>Market structures, pricing strategies, economic policies, and international trade.</p>
+                    <a href="#" class="download-btn" onclick="handleDownload(event, 'Economics Notes')">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </a>
+                </div>
+                <div class="lesson-card" data-grade="13" data-topic="ethics" style="display: none;">
+                    <div class="lesson-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Business Ethics & Law</h3>
+                    <p>Corporate governance, business ethics, commercial law, and social responsibility.</p>
+                    <a href="#" class="download-btn" onclick="handleDownload(event, 'Ethics Notes')">
+                        <i class="fas fa-file-pdf"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources" id="resources">
+        <div class="section-title reveal">
+            <h2>Study Resources</h2>
+            <p>Everything you need to excel in your A/L examinations</p>
+        </div>
+        <div class="resources-grid">
+            <div class="resource-card reveal">
+                <div class="resource-header">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Past Papers</h3>
+                </div>
+                <div class="resource-content">
+                    <ul class="resource-list">
+                        <li>
+                            <a href="#" class="resource-link" onclick="handleDownload(event, '2023 Past Paper')">
+                                <i class="fas fa-download"></i> 2023 A/L Paper
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="resource-link" onclick="handleDownload(event, '2022 Past Paper')">
+                                <i class="fas fa-download"></i> 2022 A/L Paper
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="resource-link" onclick="handleDownload(event, '2021 Past Paper')">
+                                <i class="fas fa-download"></i> 2021 A/L Paper
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="resource-link" onclick="handleDownload(event, '2020 Past Paper')">
+                                <i class="fas fa-download"></i> 2020 A/L Paper
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="resource-card reveal">
+                <div class="resource-header">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Model Papers</h3>
+                </div>
+                <div class="resource-content">
+                    <ul class="resource-list">
+                        <li>
+                            <a href="#" class="resource-link" onclick="handleDownload(event, 'Model Paper 1')">
+                                <i class="fas fa-download"></i> Model Paper Set 1
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="resource-link" onclick="handleDownload(event, 'Model Paper 2')">
+                                <i class="fas fa-download"></i> Model Paper Set 2
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="resource-link" onclick="handleDownload(event, 'Model Paper 3')">
+                                <i class="fas fa-download"></i> Model Paper Set 3
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="resource-link" onclick="handleDownload(event, 'Revision Pack')">
+                                <i class="fas fa-download"></i> Complete Revision Pack
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="resource-card reveal">
+                <div class="resource-header">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>MCQ Practice</h3>
+                </div>
+                <div class="resource-content">
+                    <ul class="resource-list">
+                        <li>
+                            <a href="#" class="resource-link" onclick="handleDownload(event, 'MCQ Bank 1')">
+                                <i class="fas fa-download"></i> MCQ Bank - Unit 1-4
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="resource-link" onclick="handleDownload(event, 'MCQ Bank 2')">
+                                <i class="fas fa-download"></i> MCQ Bank - Unit 5-8
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="resource-link" onclick="handleDownload(event, 'MCQ Answers')">
+                                <i class="fas fa-download"></i> Answer Key & Explanations
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="resource-link" onclick="handleDownload(event, 'Online Quiz')">
+                                <i class="fas fa-external-link-alt"></i> Online Practice Quiz
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="video-container reveal">
+            <div class="video-placeholder">
+                <div class="play-btn" onclick="playVideo()">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--
+      Results Section 
+    <section class="results" id="results">
+        <div class="section-title reveal">
+            <h2>Student Achievements</h2>
+            <p>Success stories from our classroom</p>
+        </div>
+        <div class="testimonials-container reveal">
+            <div class="testimonial-slider">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <p class="testimonial-text">"Sir Ranga's teaching methods made Business Studies so much easier to understand. His real-world examples helped me secure an A in my A/Ls and get into my dream university!"</p>
+                        <div class="testimonial-author">Amanda Perera</div>
+                        <div class="testimonial-role">District Rank 5 - 2023 A/L</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <p class="testimonial-text">"The structured notes and past paper discussions were invaluable. Sir doesn't just teach from the book; he teaches you how to think like a business professional."</p>
+                        <div class="testimonial-author">Dinesh Fernando</div>
+                        <div class="testimonial-role">Island Rank 12 - 2022 A/L</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <p class="testimonial-text">"I improved from a C to an A within 6 months. The individual attention and feedback on essays made all the difference. Highly recommended!"</p>
+                        <div class="testimonial-author">Sarah Jayawardena</div>
+                        <div class="testimonial-role">A Pass - 2023 A/L</div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn" onclick="moveSlider(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn" onclick="moveSlider(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+        <div class="achievements-grid">
+            <div class="achievement-item reveal">
+                <span class="achievement-number" data-target="150">0</span>
+                <div class="stat-label">A Passes in 2023</div>
+            </div>
+            <div class="achievement-item reveal">
+                <span class="achievement-number" data-target="25">0</span>
+                <div class="stat-label">District Ranks</div>
+            </div>
+            <div class="achievement-item reveal">
+                <span class="achievement-number" data-target="8">0</span>
+                <div class="stat-label">Island Ranks</div>
+            </div>
+            <div class="achievement-item reveal">
+                <span class="achievement-number" data-target="100">0</span>
+                <div class="stat-label">% Pass Rate</div>
+            </div>
+        </div>
+    </section>
+-->
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-title reveal">
+            <h2>Get In Touch</h2>
+            <p>Ready to start your journey to A/L success?</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info reveal">
+                <h3>Contact Information</h3>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <strong>WhatsApp</strong>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">+94 77 123 4567</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">ranga.prabath@email.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Location</strong>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Colombo, Sri Lanka</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>Class Hours</strong>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Weekends & Weekdays Evening</p>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Google Maps Embed</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form reveal">
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i>
+                    Message sent successfully! We'll get back to you soon.
+                </div>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name">
+                        <span class="error-message">Please enter your name</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email">
+                        <span class="error-message">Please enter a valid email</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                        <span class="error-message">Please enter your phone number</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your requirements..."></textarea>
+                        <span class="error-message">Please enter your message</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+                <div style="margin-top: 1.5rem; text-align: center;">
+                    <a href="https://wa.me/94771234567" target="_blank" class="btn btn-secondary" style="width: 100%;">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Ranga Prabath</h4>
+                    <p>Empowering Sri Lankan students to achieve excellence in Advanced Level Business Studies through quality education and dedicated mentorship.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
+                        <li><a href="#lessons"><i class="fas fa-chevron-right"></i> Lessons</a></li>
+                        <li><a href="#resources"><i class="fas fa-chevron-right"></i> Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Past Papers</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Model Papers</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Video Lessons</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Study Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+94771234567"><i class="fas fa-phone"></i> +94 77 123 4567</a></li>
+                        <li><a href="mailto:ranga.prabath@email.com"><i class="fas fa-envelope"></i> ranga.prabath@email.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Colombo, Sri Lanka</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ranga Prabath. All rights reserved. | Designed for A/L Business Studies Excellence</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Remove loader when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        const html = document.documentElement;
+
+        function toggleTheme() {
+            html.classList.toggle('light-mode');
+            const isLight = html.classList.contains('light-mode');
+            const icon = isLight ? 'fa-sun' : 'fa-moon';
+            themeToggle.innerHTML = `<i class="fas ${icon}"></i>`;
+            mobileThemeToggle.innerHTML = `<i class="fas ${icon}"></i> Toggle Theme`;
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        mobileThemeToggle.addEventListener('click', toggleTheme);
+
+        // Check saved theme
+        if (localStorage.getItem('theme') === 'light') {
+            toggleTheme();
+        }
+
+        // Mobile Menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenuFunc() {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        hamburger.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuFunc);
+        overlay.addEventListener('click', closeMenuFunc);
+        mobileLinks.forEach(link => link.addEventListener('click', closeMenuFunc));
+
+        // Sticky Navigation
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.style.padding = '0.5rem 0';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.padding = '1rem 0';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Animated Counters
+        const counters = document.querySelectorAll('.stat-number, .achievement-number');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.getAttribute('data-target'));
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            entry.target.textContent = Math.floor(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            entry.target.textContent = target + (entry.target.classList.contains('achievement-number') && target < 100 ? '+' : '');
+                        }
+                    };
+
+                    updateCounter();
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // Lesson Tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const lessonCards = document.querySelectorAll('.lesson-card');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const grade = btn.getAttribute('data-grade');
+                lessonCards.forEach(card => {
+                    if (card.getAttribute('data-grade') === grade) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.classList.add('visible'), 10);
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.remove('visible');
+                    }
+                });
+            });
+        });
+
+        // Initialize first tab
+        document.querySelector('.tab-btn.active').click();
+
+        // Lesson Search
+        const searchInput = document.getElementById('lessonSearch');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const activeGrade = document.querySelector('.tab-btn.active').getAttribute('data-grade');
+            
+            lessonCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const desc = card.querySelector('p').textContent.toLowerCase();
+                const grade = card.getAttribute('data-grade');
+                
+                if (grade === activeGrade && (title.includes(searchTerm) || desc.includes(searchTerm))) {
+                    card.style.display = 'block';
+                } else if (grade === activeGrade) {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Testimonial Slider
+        let currentSlide = 0;
+        const track = document.getElementById('testimonialTrack');
+        const dotsContainer = document.getElementById('sliderDots');
+        const testimonials = document.querySelectorAll('.testimonial-card');
+
+        // Create dots
+        testimonials.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        function updateSlider() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function moveSlider(direction) {
+            currentSlide = (currentSlide + direction + testimonials.length) % testimonials.length;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        // Auto slide
+        setInterval(() => moveSlider(1), 5000);
+
+        // Form Validation
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let isValid = true;
+
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const phone = document.getElementById('phone');
+            const message = document.getElementById('message');
+
+            // Reset errors
+            document.querySelectorAll('.form-group').forEach(group => group.classList.remove('error'));
+
+            if (name.value.trim() === '') {
+                name.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            if (!email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                email.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            if (phone.value.trim() === '') {
+                phone.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            if (message.value.trim() === '') {
+                message.parentElement.classList.add('error');
+                isValid = false;
+            }
+
+            if (isValid) {
+                successMessage.classList.add('show');
+                contactForm.reset();
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+            }
+        });
+
+        // Download Handler
+        function handleDownload(e, filename) {
+            e.preventDefault();
+            alert(`Downloading: ${filename}\n\n(In a real implementation, this would download the actual file)`);
+        }
+
+        // Video Play Handler
+        function playVideo() {
+            alert('Video player would open here. Embed your YouTube video using an iframe in this section.');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation to lesson cards on scroll
+        const lessonObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        lessonCards.forEach(card => lessonObserver.observe(card));
+    </script>
+    <p>Developer - Themiya Sapumal </p>
+</body>
+</html> 
